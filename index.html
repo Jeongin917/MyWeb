@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Montserrat:ital@1&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/821e8d3801.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>PoP.inc</title>
+
+</head>
+<style>
+    table, th, td {
+        border-collapse: collapse;
+        text-align: center;
+        width: 1450px;
+        border-bottom: 1px solid darkgrey;
+        border-top: 1px solid darkgrey;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    th {
+        background-color: black;
+        color: whitesmoke;
+    }
+</style>
+<body>
+<header>
+    <!-- 헤더 -->
+    <div id="login">
+        <a href="03_Join_page/joinUs.html">login</a> | <a href="03_Join_page/join2.html">Join</a>
+    </div>
+    <div class="clear"></div>
+
+    <div id="logo">
+        <img src="img/logo.png" alt="PoP inc." width="auto" height="70">
+    </div>
+    <nav id="top_menu">
+        <!-- 네비게이션(메뉴) -->
+        <ul>
+            <li><a href="04_How_to/howTo.html">오시는길</a></li>
+            <li><a href="02_About_us/aboutUs.html">About us</a></li>
+            <li><a href="../myweb/index.html">Home</a></li>
+
+        </ul>
+    </nav>
+</header>
+<div class="clear"></div>
+<hr>
+
+<!--콘텐츠-->
+<section id="dash_board">
+    <!-- 채용현황 dash-board -->
+    <h1 id="subtitle">채용 현황 바로보기</h1>
+    <div class="search_info">
+        <div class="row">
+            <form>
+                지역 : <select id="area" name="area_all">
+                <option value="%20">전체</option>
+                <option value="강원">강원</option>
+                <option value="경기">경기</option>
+                <option value="경남">경남</option>
+                <option value="경북">경북</option>
+                <option value="광주">광주</option>
+                <option value="대구">대구</option>
+                <option value="대전">대전</option>
+                <option value="부산">부산</option>
+                <option value="서울">서울</option>
+                <option value="세종">세종</option>
+                <option value="울산">울산</option>
+                <option value="인천">인천</option>
+                <option value="전남">전남</option>
+                <option value="전북">전북</option>
+                <option value="제주">제주</option>
+                <option value="충남">충남</option>
+                <option value="충북">충북</option>
+            </select> <br>
+
+                경력 : <select id="experience" name="work_ex">
+                <option value="" selected>전체</option>
+                <option value="J01301">신입</option>
+                <option value="J01302">경력</option>
+                <option value="J01300">무관</option>
+            </select> <br>
+
+                출력페이지 : <input type="number" value="1" id="START_INDEX">
+                출력 줄 : <input type="number" value="15" id="END_INDEX"><br><br>
+
+                <div id=btn_group>
+                    <button type="button" id=btn1 onclick="loadData()">입력한 조건으로 검색</button>
+                    <button type="button" id=btn2 onclick="removeTable()">지우기</button>
+                </div>
+                <br>
+            </form>
+
+            <table id="demoJSON"></table>
+            <script>
+
+                var api_key = "서울공공데이터 API key";
+
+                function removeTable() {
+                    document.getElementById('demoJSON').innerHTML = "";
+                }
+
+                function loadData() {
+                    let area = document.getElementById('area').value.trim();
+                    let start_index = document.getElementById('START_INDEX').value.trim();
+                    let end_index = document.getElementById('END_INDEX').value.trim();
+                    var experience = document.getElementById('experience').value.trim();
+                    let url
+
+                    url = `http://openapi.seoul.go.kr:8088/${api_key}/json/GetJobInfo/${start_index}/${end_index}/%20/%20/${area}/${experience}/`
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(jsonObj => parseJSON(jsonObj))
+                    ;
+                } // end loadData()
+                // JSON
+                function parseJSON(jsonObj) {
+                    const table1 = [];
+                    table1.push("<tr><th>공고명</th><th>근무장소</th><th>회사명</th></tr>");
+
+                    jsonObj.GetJobInfo.row.forEach(row => {
+                        table1.push(`
+                    <tr id="table">
+                        <td>${row.JO_SJ}</td>
+                        <td>${row.WORK_PARAR_BASS_ADRES_CN}</td>
+                        <td>${row.CMPNY_NM}</td>
+                    </tr>
+                     `);
+                    });
+                    document.getElementById('demoJSON').innerHTML = table1.join('\n');
+                }
+            </script>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <!-- 푸터 -->
+    <hr>
+    <div id="info">
+        이용약관 &nbsp|&nbsp 개인정보 처리방침 &nbsp|&nbsp 오시는길 &nbsp|&nbsp 사이트맵 &nbsp|&nbsp 제휴 및 사업제안
+    </div>
+    <br>
+    <div id="underline">
+        Adress : 서울특별시 강남구 테헤란로 146 <br>
+        고객센터 : 1588 - 1588 <br>
+    </div>
+    <!-- 푸터2 : 저작권-->
+    <div class="footer_copyright">
+        Copyright © PoP inc. All rights reserved.<br>
+    </div>
+    <div id="social">
+        <i class="fa-brands fa-facebook fa-2x" style="color: #005eff;"></i>
+        <i class="fa-brands fa-instagram fa-2x" style="color: #ff38f8;"></i>
+        <i class="fa-brands fa-youtube fa-2x" style="color: #ff2600;"></i>
+<!--        <img src="img/facebook.gif" width="25" height="25"/><img src="img/youtube_logo.png" width="25"-->
+<!--                                                                 height="25"/><img src="img/instagram_logo.png"-->
+<!--                                                                                   width="25" height="27"/>-->
+    </div>
+</footer>
+
+</body>
+</html>

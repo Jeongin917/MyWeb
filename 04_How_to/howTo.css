@@ -1,0 +1,144 @@
+body {
+    background-color: rgb(230, 243, 248);
+    font-family: Arial, Helvedusrtica, sans-serif;
+}
+
+/*nav_menu: 네비게이션 메뉴 */
+#nav_menu {
+    /*outline: 2px solid tomato;*/
+    width: 300px;
+    float: right;
+    display: flex;
+    list-style: none;
+    padding-left: 0px;
+
+}
+
+#nav_menu {
+    list-style: none;
+    font-size: 15px;
+    font-weight: 100;
+    color: #333;
+}
+
+#nav_menu li {
+    /* outline: 2px solid limegreen; */
+
+    float: right;
+    margin: 7px 6px; /* ↕ ↔ */
+}
+
+#nav_menu li a {
+    display: flex;
+    height: 20px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#nav_menu a:hover {
+    background-repeat: repeat-x;
+    background-position: bottom;
+    color: rgb(50, 94, 240);
+    font-weight: bold;
+}
+
+#navbar_toggleBtn{
+    display: none;
+    position: absolute;
+    right: 20px;
+    font-size: 28px;
+    /*color: ;*/
+
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    #nav_menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    #navbar_toggleBtn {
+        /*outline: 2px solid green;*/
+        display: block;
+        margin-top: 30px;
+    }
+    .nav_menu.active,
+    .navbar_toggleBtn.active {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 249%) {
+    #nav_menu {
+        display: block !important;
+    }
+}
+
+/* header */
+header {
+
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    /* background-color: rgb(210, 226, 233); */
+    float: left;
+}
+
+#logo {
+    float: left;
+    margin: 20px 20px /* ↑  →  ↓  ← */
+}
+
+header #logo img {
+    width: 120px;
+}
+
+header #name {
+    margin: 0 0 0 250px;
+    text-align: center;
+}
+
+#nav_button {
+    float: right;
+}
+
+/*map*/
+#googleMap {
+    width: 300px;
+    height: 300px;
+}
+
+
+/* footer */
+#info {
+    font-family: Arial, Helvedusrtica, sans-serif;
+    font-size: small;
+}
+
+#underline {
+    font-family: Arial, Helvedusrtica, sans-serif;
+    font-size: small;
+}
+
+.footer_copyright {
+    font-size: 12px;
+    /* text-align: center; */
+    font-family: 'Montserrat', sans-serif;
+}
+
+footer #social {
+    width: 130px;
+    margin: -80px 5px 0 0;
+    float: right;
+}
+
+footer #social img {
+    margin: 0 7px;
+}

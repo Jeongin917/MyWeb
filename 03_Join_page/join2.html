@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Montserrat:ital@1&family=Noto+Sans+KR&family=Roboto&display=swap"
+          rel="stylesheet">
+    <script src="https://kit.fontawesome.com/821e8d3801.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="join2.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>Join us</title>
+</head>
+
+<script>
+    $(function(){
+        $("#navbar_toggleBtn").click(function(){
+            $("#nav_menu").slideToggle();
+        });
+    });
+</script>
+
+<body>
+<header>
+    <nav class="container">
+        <!-- 헤더 -->
+        <div id="logo">
+            <img src="../img/logo.png" href="index.html" class="headA"></img>
+        </div>
+
+        <!-- 네비게이션(메뉴) -->
+        <ul id="nav_menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../02_About_us/aboutUs.html">About us</a></li>
+            <li><a href="../04_How_to/howTo.html">오시는 길</a></li>
+        </ul>
+        <a href="#" id="navbar_toggleBtn" >
+            <i class="fa-solid fa-burger" style="color: #b45c5c;"></i>
+        </a>
+
+    </nav>
+</header>
+<hr>
+<!-- 콘텐츠 -->
+<div id="name">
+    <h1 style="font-size: 45px; text-align: center;">회원가입</h1>
+</div>
+<div id="form">
+    아이디 *<br>
+    <input type="text" name="ID" id="id" placeholder="아이디 입력" size="40px" required> <br>
+    비밀번호 *<br>
+    <input type="password" name="PW" id="pw" placeholder="비밀번호 입력" size="40px" required> <br>
+    이름 *<br>
+    <input type="text" name="NAME" id="full_name" placeholder="이름을 입력해주세요" size="40px" required> <br>
+    주소<br>
+    <input type="text" name="AD" id="adress" placeholder="주소를 입력해주세요" size="40px" required> <br>
+    <input type="text" name="ADRESS" id="spe_adress" placeholder="상제주소" size="40px" required> <br>
+    전화번호 *<br>
+    <input type="text" name="NUMBER" id="number" placeholder="휴대폰 번호 입력('-'제외)" size="40px" required> <br>
+    이메일 주소 *<br>
+    <input type="text" name="email1" id="email1" size="40px">
+    <button type="button" id="btn" onclick="joinCheck()"><a id="btn_s" href="joinUs.html">회원가입</a></button>
+</div>
+<script src="join2.js"></script>
+
+<footer>
+    <!-- 푸터1 -->
+    <hr>
+    <div id="underinfo">
+        이용약관 &nbsp|&nbsp 개인정보 처리방침 &nbsp|&nbsp 오시는길 &nbsp|&nbsp 사이트맵 &nbsp|&nbsp 제휴 및 사업제안
+    </div>
+    <br>
+    <div id="underline">
+        Adress : 서울특별시 강남구 테헤란로 146 <br>
+        고객센터 : 1588 - 1588 <br>
+    </div>
+    <!-- 푸터2 : 저작권-->
+    <div class="footer_copyright">
+        Copyright © PoP inc. All rights reserved.<br>
+    </div>
+    <div id="social">
+        <i class="fa-brands fa-facebook fa-2x" style="color: #005eff;"></i>
+        <i class="fa-brands fa-instagram fa-2x" style="color: #ff38f8;"></i>
+        <i class="fa-brands fa-youtube fa-2x" style="color: #ff2600;"></i>
+    </div>
+</footer>
+</body>
+</html>
